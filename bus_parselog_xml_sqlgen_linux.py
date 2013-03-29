@@ -134,6 +134,10 @@ def ParseRawLog(f,basicinfo,start,end):
                 tid = match.group(2)
                 startx = match.group(3)
                 starty = match.group(4)
+                
+                r=basicinfo.get('norec')
+                basicinfo['norec']=r+1
+
                 try:
                     searchinfo(startx,starty,start,today,'0')
                 except:
@@ -147,8 +151,7 @@ def ParseRawLog(f,basicinfo,start,end):
                     print >> writeError, line
                     continue
                 
-                r=basicinfo.get('norec')
-                basicinfo['norec']=r+1
+                
                 try:
                     dis = caldistant(startx,starty,endx,endy)
                     dislist = basicinfo.get('distant')
