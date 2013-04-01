@@ -288,7 +288,8 @@ def insertbasic(basicinfo):
     avgtime = float(sumtime)/float(noSuccess)
     #deal with distant
     for item in dislist:
-        sumdis = sumdis+int(item)
+        if not math.isnan(item):
+            sumdis = sumdis+int(item)
     #insert database
     #value = [noReceive,noSuccess,maxtime,mintime,avgtime,sumdis,logtype,'',getime()]
     t = getime()
