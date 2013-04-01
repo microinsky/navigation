@@ -211,7 +211,8 @@ def insertbasic(basicinfo,today):
     avgtime = float(sumtime)/float(noSuccess)
     #deal with distant
     for item in dislist:
-        sumdis = sumdis+item
+        if not math.isnan(item):
+            sumdis = sumdis+item
     #insert database
     value = [noReceive,noSuccess,maxtime,mintime,avgtime,sumdis,logtype,'',getime(today)]
     #cur.execute('insert into nv_basic_info (fre_request,fre_success,max_elapse,min_elapse,avg_elapse,sum_len,service,platform,day_time) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)',value)
